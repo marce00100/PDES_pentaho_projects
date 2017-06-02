@@ -1,0 +1,99 @@
+<Schema name="ph prm ext">
+  <Dimension name="D meta">
+    <Hierarchy name="Cant" hasAll="true" primaryKey="id">
+      <Table name="d_meta" schema="public"/>
+      <Level name="Cant" uniqueMembers="false" column="cant" type="Numeric">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Cod m" hasAll="true" primaryKey="id">
+      <Table name="d_meta" schema="public"/>
+      <Level name="Cod m" uniqueMembers="false" column="cod_m" type="Numeric">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Descripcion m" hasAll="true" primaryKey="id">
+      <Table name="d_meta" schema="public"/>
+      <Level name="Descripcion m" uniqueMembers="false" column="descripcion_m" type="String">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Id" hasAll="true" primaryKey="id">
+      <Table name="d_meta" schema="public"/>
+      <Level name="Id" uniqueMembers="false" column="id" type="Numeric">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Nombre m" hasAll="true" primaryKey="id">
+      <Table name="d_meta" schema="public"/>
+      <Level name="Nombre m" uniqueMembers="false" column="nombre_m" type="String">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Pilar meta" hasAll="true" primaryKey="id">
+      <Table name="d_meta" schema="public"/>
+      <Level name="Pilar meta" uniqueMembers="false" column="pilar_meta" type="String">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension name="D pilar">
+    <Hierarchy name="Cod p" hasAll="true" primaryKey="id">
+      <Table name="d_pilar" schema="public"/>
+      <Level name="Cod p" uniqueMembers="false" column="cod_p" type="Numeric">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Descripcion p" hasAll="true" primaryKey="id">
+      <Table name="d_pilar" schema="public"/>
+      <Level name="Descripcion p" uniqueMembers="false" column="descripcion_p" type="String">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Id" hasAll="true" primaryKey="id">
+      <Table name="d_pilar" schema="public"/>
+      <Level name="Id" uniqueMembers="false" column="id" type="Numeric">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Nombre p" hasAll="true" primaryKey="id">
+      <Table name="d_pilar" schema="public"/>
+      <Level name="Nombre p" uniqueMembers="false" column="nombre_p" type="String">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension name="D resultado">
+    <Hierarchy name="Clasificacion" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public"/>
+      <Level name="Clasificacion" uniqueMembers="false" column="clasificacion" type="String">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Cod r" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public"/>
+      <Level name="Cod r" uniqueMembers="false" column="cod_r" type="Numeric">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Descripcion r" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public"/>
+      <Level name="Descripcion r" uniqueMembers="false" column="descripcion_r" type="String">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Id" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public"/>
+      <Level name="Id" uniqueMembers="false" column="id" type="Numeric">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Nombre r" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public"/>
+      <Level name="Nombre r" uniqueMembers="false" column="nombre_r" type="String">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Sector" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public"/>
+      <Level name="Sector" uniqueMembers="false" column="sector" type="String">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="ph prm ext">
+    <Table name="h_pmr" schema="public"/>
+    <DimensionUsage name="D meta" source="D meta" foreignKey="id_m"/>
+    <DimensionUsage name="D pilar" source="D pilar" foreignKey="id_p"/>
+    <DimensionUsage name="D resultado" source="D resultado" foreignKey="id_r"/>
+    <Measure name="Cantidad" column="cantidad" aggregator="sum" formatString="&#x23;"/>
+    <Measure name="Id fact" column="id_fact" aggregator="sum" formatString="&#x23;"/>
+    <Measure name="Id m" column="id_m" aggregator="sum" formatString="&#x23;"/>
+    <Measure name="Id p" column="id_p" aggregator="sum" formatString="&#x23;"/>
+    <Measure name="Id r" column="id_r" aggregator="sum" formatString="&#x23;"/>
+  </Cube>
+</Schema>

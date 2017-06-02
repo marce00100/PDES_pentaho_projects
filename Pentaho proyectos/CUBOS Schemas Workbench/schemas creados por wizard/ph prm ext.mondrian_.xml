@@ -1,0 +1,58 @@
+<Schema name="ph prm XML  ext">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="D meta">
+    <Hierarchy name="Cant" visible="true" hasAll="true">
+      <Table name="d_meta" schema="public">
+      </Table>
+      <Level name="Cant kzz" visible="true" column="id" nameColumn="cant" type="Numeric" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Pilar meta" visible="true" hasAll="true" primaryKey="id">
+      <Table name="d_meta" schema="public">
+      </Table>
+      <Level name="Pilar meta" visible="true" column="id" nameColumn="pilar_meta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="D pilar">
+    <Hierarchy name="Nombre p" visible="true" hasAll="true">
+      <Table name="d_pilar" schema="public">
+      </Table>
+      <Level name="Nombre p" visible="true" column="id" nameColumn="nombre_p" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="D resultado">
+    <Hierarchy name="Clasificacion" visible="true" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="Clasificacion" visible="true" column="id" nameColumn="clasificacion" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Cod r" visible="true" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="Cod r" visible="true" column="id" nameColumn="cod_r" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Sector" visible="true" hasAll="true" primaryKey="id">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="Sector" visible="true" column="id" nameColumn="sector" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="ph prm ext" visible="true" cache="true" enabled="true">
+    <Table name="h_pmr" schema="public">
+    </Table>
+    <DimensionUsage source="D meta" name="D meta" visible="true" foreignKey="id_m" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="D pilar" name="D pilar" visible="true" foreignKey="id_p" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="D resultado" name="D resultado" visible="true" foreignKey="id_r" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Cantidad" column="cantidad" aggregator="count">
+    </Measure>
+    <Measure name="cantidad2" column="cantidad" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

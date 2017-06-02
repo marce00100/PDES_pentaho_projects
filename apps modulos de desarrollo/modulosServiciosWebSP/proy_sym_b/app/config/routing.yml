@@ -1,0 +1,11 @@
+
+
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+serviciosweb:
+    resource: "@ServicioswebBundle/Controller"
+    type:     annotation
+    prefix:   /api/spie
