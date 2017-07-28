@@ -1,0 +1,94 @@
+en el excel en la fila se han separado los resultados asociados en las filas correspondientes
+
+
+176 p2m4r48 nombre de indicador: R60-63: Nº de vías fluviales navegables rehabilitadas y/o habilitadas, por tipo de conexión (internacional, departamental, municipal, intramunicipal). 
+
+208 p2m4r48 nombre indicador: "R48-54: 1) Nº de nuevos tramos carreteros (por departamento)
+• Nº de km incrementales Dobles Vías
+• Nº de km incrementales Corredor Biocéanico
+• Nº de km incrementales Corredor Norte-Sur
+• Nº de km incrementales Corredor Oeste-Norte
+• Nº de km incrementales Diagonal Jaime Mendoza
+• N de km en conexiones nuevas a capitales de departamento
+• Nº de km incrementales de la “Y” de integración para conectar regiones productivas.
+"
+
+675 p6m9r179  nombre ind: R150 y 181: Porcentaje (%) de incremento de la productividad promedio de las MyPEs en los rubros asociados a los complejos productivos.
+
+686 p6m9r180  nombre ind: R183-184: Porcentaje (%) de incremento en MyPEs y PyMEs de: i) acceso a financiamiento; ii) acceso a formación; iii) acceso a tecnología, por sexo del propietario/a.
+
+
+675 p6m9r180  nombre ind: R150 y 181: Porcentaje (%) de incremento de la productividad promedio de las MyPEs en los rubros asociados a los complejos productivos.
+
+
+
+-------------------------------------------------
+un resultado de codigo 83  tiene como resultado_asociado a un resultado de codigo 344 (No existe cod_r = 344)
+
+---------------------------------------------
+el resultado 48 se llama asi mismo
+-----------------------------------------------
+el resultado 149 tiene dos diferentes subsector
+
+faltan los resultados 229,230, 310
+-----------------------------------------------------
+
+
+
+
+
+
+
+
+Existen 20 indicador_nombre repetidos que tienen como vinculo resultado_asociado = 0 pero a la vez tienen diferentes fuentes de informacion
+
+
+
+
+
+=====================================================================================================
+=====================================================================================================
+=================        NOTAS DE PDES                               ===================================
+=====================================================================================================
+
+* en tabla accion hay la columna nombre la cual tiene el alias de Producto_proyecto, pero tambien en la tabla productos hay la columna nombre_proyecto, los cuales solo coinciden en los casos en la categoria es proyecto_PDES, solo este tipo de categiria tienen join con proyectos
+
+
+
+
+
+
+
+    /**
+    * @Route("/general/{op}/{valor}",  defaults={"op" = "", "valor"=""})
+    * @Method({"GET"})
+    */
+    public function generalAction($op, $valor)  // op {cod_p, cod_e, sigla_e, gestion_inicio, codigo}
+
+    /**
+    * @Route("/proyecto/{op}/{valor}",  defaults={"op" = "", "valor"=""})
+    * @Method({"GET"})
+    */
+    public function proyectoAction($op, $valor)  // op {cod_p, cod_e, sigla_e, gestion_inicio, codigo, cod_dep}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

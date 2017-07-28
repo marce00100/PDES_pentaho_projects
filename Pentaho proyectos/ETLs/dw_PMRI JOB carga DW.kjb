@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>dw PMRI JOB Carga de excel </name>
+  <name>dw PMRI JOB Carga dw de spie postgres excel</name>
   <description/>
   <extended_description/>
   <job_version/>
@@ -332,7 +332,7 @@
       <yloc>112</yloc>
     </entry>
     <entry>
-      <name>carga_dims Indicadores</name>
+      <name>pmr Indicadores nuevo</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -363,14 +363,14 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>512</xloc>
-      <yloc>112</yloc>
+      <xloc>368</xloc>
+      <yloc>176</yloc>
     </entry>
     <entry>
       <name>SQL</name>
       <description/>
       <type>SQL</type>
-      <sql>delete from d_pilar&#x3b;&#xd;&#xa;delete from d_meta&#x3b;&#xd;&#xa;delete from d_resultado&#x3b;&#xd;&#xa;delete from d_indicadores&#x3b;&#xd;&#xa;delete from d_punto_medicion_indicadores&#x3b;&#xd;&#xa;delete from h_pmr&#x3b;&#xd;&#xa;delete from h_resultados_indicadores&#x3b;</sql>
+      <sql/>
       <useVariableSubstitution>F</useVariableSubstitution>
       <sqlfromfile>F</sqlfromfile>
       <sqlfilename/>
@@ -383,7 +383,7 @@
       <yloc>112</yloc>
     </entry>
     <entry>
-      <name>carga PMR </name>
+      <name>pmr</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -414,11 +414,11 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>352</xloc>
-      <yloc>112</yloc>
+      <xloc>400</xloc>
+      <yloc>16</yloc>
     </entry>
     <entry>
-      <name>Carga Dim sp_sisin</name>
+      <name>pmra sp sisinweb</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
@@ -449,8 +449,43 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>512</xloc>
-      <yloc>240</yloc>
+      <xloc>368</xloc>
+      <yloc>272</yloc>
+    </entry>
+    <entry>
+      <name>pmra_proy_ind_terr</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;dw_carga_dims_sp_hechos.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>576</xloc>
+      <yloc>96</yloc>
     </entry>
   </entries>
   <hops>
@@ -465,7 +500,7 @@
     </hop>
     <hop>
       <from>SQL</from>
-      <to>carga PMR </to>
+      <to>pmr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -473,8 +508,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>carga PMR </from>
-      <to>carga_dims Indicadores</to>
+      <from>SQL</from>
+      <to>pmr Indicadores nuevo</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -482,8 +517,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>carga_dims Indicadores</from>
-      <to>Carga Dim sp_sisin</to>
+      <from>SQL</from>
+      <to>pmra sp sisinweb</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>SQL</from>
+      <to>pmra_proy_ind_terr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -492,5 +536,89 @@
     </hop>
   </hops>
   <notepads>
+    <notepad>
+      <note>obtiene de Mysql SPIE simensiones y hechos &#xd;&#xa;con proyectos territorializacion </note>
+      <xloc>656</xloc>
+      <yloc>80</yloc>
+      <width>248</width>
+      <heigth>42</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>PMRA  se obtiene de postgres &#x28;&#x29;</note>
+      <xloc>448</xloc>
+      <yloc>16</yloc>
+      <width>178</width>
+      <heigth>26</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>resultados con indicadores nuevos de excel</note>
+      <xloc>432</xloc>
+      <yloc>176</yloc>
+      <width>237</width>
+      <heigth>26</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>sisin de pg tabla sisinweb_2</note>
+      <xloc>448</xloc>
+      <yloc>272</yloc>
+      <width>155</width>
+      <heigth>26</heigth>
+      <fontname>Segoe UI</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
 </job>

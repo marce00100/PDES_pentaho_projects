@@ -1,0 +1,13 @@
+POSTGRESQL
+
+base_estadistica		contiene la base original de entreparentesis
+dw				contiene el data warehouse
+estadistica_db			es la base de staging para los ETL
+
+bk db_sisinweb.backup		contiene base del sisin recuperado de un archivo excel
+
+los demas son versiones que llevan casi la misma informacion, se recomienda los primeros sin extencion backup
+
+MYSQL
+
+db_spie		query con la base del spie en mysql

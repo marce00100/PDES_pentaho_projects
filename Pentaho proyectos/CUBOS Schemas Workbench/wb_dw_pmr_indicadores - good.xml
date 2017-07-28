@@ -1,0 +1,572 @@
+<Schema name="wb_dw_pmr_indicadores">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Pilares">
+    <Hierarchy name="Pilares" visible="true" hasAll="true" primaryKey="id_pilar">
+      <Table name="d_pilar" schema="public">
+      </Table>
+      <Level name="nombre pilar" visible="true" column="id_pilar" nameColumn="nombre_p" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="desc pilar" visible="true" column="id_pilar" nameColumn="descripcion_p" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Metas">
+    <Hierarchy name="Meta" visible="true" hasAll="true" primaryKey="id_meta">
+      <Table name="d_meta" schema="public">
+      </Table>
+      <Level name="nombre meta" visible="true" column="id_meta" nameColumn="nombre_m" ordinalColumn="pilar_meta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="pilar_meta" visible="true" column="id_meta" nameColumn="pilar_meta" ordinalColumn="pilar_meta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="desc meta" visible="true" column="id_meta" nameColumn="descripcion_m" ordinalColumn="pilar_meta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Resultados">
+    <Hierarchy name="Resultados" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="desc  resultado" visible="true" column="id_resultado" nameColumn="descripcion_r" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="cod_r" visible="true" column="id_resultado" nameColumn="cod_r" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="nombre resultado" visible="true" column="id_resultado" nameColumn="nombre_r" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Clasificacion" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="clasificacion resultado" visible="true" column="clasificacion" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Sector" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="sector Resultado" visible="true" column="sector" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Macrosector" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="macroSector" visible="true" column="macro_sector" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Variable_medicion" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="variables de medicion" visible="true" column="variables_medicion" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Acciones">
+    <Hierarchy name="Acciones" visible="true" hasAll="true" primaryKey="id_accion">
+      <Table name="d_accion" schema="public">
+      </Table>
+      <Level name="nombre accion" visible="true" column="id_accion" nameColumn="nombre_a" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="desc accion" visible="true" column="id_accion" nameColumn="descripcion_a" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Productos_proyectos">
+    <Hierarchy name="Nombre producto proyecto" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="nombre producto proyecto" visible="true" column="producto_proyecto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Presupuesto" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="presupuesto" visible="true" column="presupuesto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Inicio" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="inicio" visible="true" column="inicio" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Fin" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="fin" visible="true" column="fin" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Linea base cantidad" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="linea base cantidad" visible="true" column="linea_base_cantidad" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Simbolo" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="simbolo unidad medida" visible="true" column="simbolo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Linea Base" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="linea base" visible="true" column="linea_base" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Categoria" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="categoria" visible="true" column="categoria" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Desc indicador proceso" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="desc indicador proceso" visible="true" column="desc_indicador_proceso" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Tipo proceso" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="tipo proceso" visible="true" column="tipo_proceso" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Sisin" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+      <Table name="d_producto_proyecto" schema="public">
+      </Table>
+      <Level name="sisin" visible="true" column="sisin" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Entidades">
+    <Hierarchy name="Entidades" visible="true" hasAll="true" primaryKey="id_entidad">
+      <Table name="d_entidad" schema="public">
+      </Table>
+      <Level name="entidad" visible="true" column="nombre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="sigla" visible="true" column="sigla" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Proyectos">
+    <Hierarchy name="Sector proyecto" visible="true" hasAll="true" primaryKey="id_proyecto">
+      <Table name="d_proyectos" schema="public">
+      </Table>
+      <Level name="sector proyecto" visible="true" column="sector" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Nombre proyecto" visible="true" hasAll="true" primaryKey="nombre_proyecto">
+      <Table name="d_proyectos" schema="public">
+      </Table>
+      <Level name="nombre proyecto" visible="true" column="nombre_proyecto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Codigo demanda" visible="true" hasAll="true" primaryKey="id_proyecto">
+      <Table name="d_proyectos" schema="public">
+      </Table>
+      <Level name="codigo demanda" visible="true" column="codigo_demanda" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Departamentos">
+    <Hierarchy name="Departamento" visible="true" hasAll="true" primaryKey="id_departamento">
+      <Table name="d_departamento" schema="public" alias="">
+      </Table>
+      <Level name="departamento" visible="true" column="id_departamento" nameColumn="departamento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="cod dep" visible="true" column="id_departamento" nameColumn="codigo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Provincias">
+    <Hierarchy name="Provincia" visible="true" hasAll="true" primaryKey="id_provincia">
+      <Table name="d_provincia" schema="public" alias="">
+      </Table>
+      <Level name="provincia" visible="true" column="id_provincia" nameColumn="provincia" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="cod prov" visible="true" column="id_provincia" nameColumn="codigo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Municipios">
+    <Hierarchy name="Municipio" visible="true" hasAll="true" primaryKey="id_municipio">
+      <Table name="d_municipio" schema="public" alias="">
+      </Table>
+      <Level name="municipio" visible="true" column="id_municipio" nameColumn="municipio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="cod mun" visible="true" column="id_municipio" nameColumn="codigo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Comunidades">
+    <Hierarchy name="Comunidad" visible="true" hasAll="true" primaryKey="id_comunidad">
+      <Table name="d_comunidad" schema="public" alias="">
+      </Table>
+      <Level name="comunidad" visible="true" column="comunidad" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="cod com" visible="true" column="codigo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Cubo PMR" visible="true" cache="true" enabled="true">
+    <Table name="h_pmr" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Unidad" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Cont" column="cantidad" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Cubo PMRA" visible="true" cache="true" enabled="true">
+    <Table name="h_pmra" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Acciones" name="Acciones" visible="true" foreignKey="id_accion" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Unidad" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Cont" column="cantidad" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Cubo PMRA producto proyecto" visible="true" cache="true" enabled="true">
+    <Table name="h_pmra_producto_proyecto" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Acciones" name="Acciones" visible="true" foreignKey="id_accion" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Productos_proyectos" name="Productos_proyectos" visible="true" foreignKey="id_producto_proyecto" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Entidades" name="Entidades" visible="true" foreignKey="id_entidad" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Unidad" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Cont" column="cantidad" aggregator="count" visible="true">
+    </Measure>
+    <Measure name="linea_base_cantidad" column="linea_base_cantidad" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="presupuesto" column="presupuesto" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Cubo PMRA proyectos" visible="true" cache="true" enabled="true">
+    <Table name="h_pmra_proyectos" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Acciones" name="Acciones" visible="true" foreignKey="id_accion" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Productos_proyectos" name="Productos_proyectos" visible="true" foreignKey="id_producto_proyecto" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Entidades" name="Entidades" visible="true" foreignKey="id_entidad" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Proyectos" name="Proyectos" visible="true" foreignKey="id_proyecto" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Unidad" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Cont" column="cantidad" aggregator="count" visible="true">
+    </Measure>
+    <Measure name="linea_base_cantidad" column="linea_base_cantidad" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="presupuesto" column="presupuesto" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="total_costo" column="total_costo" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="total_quinquenio" column="total_quinquenio" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2016" column="gestion_2016" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2017" column="gestion_2017" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2018" column="gestion_2018" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2019" column="gestion_2019" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2020" column="gestion_2020" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Cubo PMRA proyectos Ind INE" visible="true" cache="true" enabled="true">
+    <Table name="h_pmra_proyectos_indicadores_ine" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Acciones" name="Acciones" visible="true" foreignKey="id_accion" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Productos_proyectos" name="Productos_proyectos" visible="true" foreignKey="id_producto_proyecto" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Entidades" name="Entidades" visible="true" foreignKey="id_entidad" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Proyectos" name="Proyectos" visible="true" foreignKey="id_proyecto" highCardinality="false">
+    </DimensionUsage>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_indicador_impacto_ine" highCardinality="false" name="Indicadores_impacto_INE">
+      <Hierarchy name="Indicadores Impacto INE" visible="true" hasAll="true" primaryKey="id_indicadores_ine">
+        <Table name="d_indicadores_ine" schema="public">
+        </Table>
+        <Level name="indicadores impacto INE" visible="true" column="id_indicador_impacto_ine" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="indicador impacto" visible="true" column="indicador_impacto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_producto_proyecto" highCardinality="false" name="Indicador_Proceso">
+      <Hierarchy name="Indicador Proceso" visible="true" hasAll="true" primaryKey="id_producto_proyecto">
+        <Table name="d_producto_proyecto" schema="public">
+        </Table>
+        <Level name="desc indicador proceso" visible="true" column="desc_indicador_proceso" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Unidad" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Cont" column="cantidad" aggregator="count" visible="true">
+    </Measure>
+    <Measure name="linea_base_cantidad" column="linea_base_cantidad" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="presupuesto" column="presupuesto" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="total_costo" column="total_costo" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="total_quinquenio" column="total_quinquenio" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2016" column="gestion_2016" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2017" column="gestion_2017" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2018" column="gestion_2018" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2019" column="gestion_2019" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="gestion_2020" column="gestion_2020" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Cubo PMRA producto proyecto territorio" visible="true" cache="true" enabled="true">
+    <Table name="h_pmra_territorio" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Acciones" name="Acciones" visible="true" foreignKey="id_accion" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Productos_proyectos" name="Productos_proyectos" visible="true" foreignKey="id_producto_proyecto" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Entidades" name="Entidades" visible="true" foreignKey="id_entidad" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Departamentos" name="Departamentos" visible="true" foreignKey="id_departamento">
+    </DimensionUsage>
+    <DimensionUsage source="Provincias" name="Provincias" visible="true" foreignKey="id_provincia">
+    </DimensionUsage>
+    <DimensionUsage source="Municipios" name="Municipios" visible="true" foreignKey="id_municipio">
+    </DimensionUsage>
+    <DimensionUsage source="Comunidades" name="Comunidades" visible="true" foreignKey="id_comunidad">
+    </DimensionUsage>
+    <Measure name="Unidad" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Cont" column="cantidad" aggregator="count" visible="true">
+    </Measure>
+    <Measure name="linea_base_cantidad" column="linea_base_cantidad" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="presupuesto" column="presupuesto" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="poblacion" column="poblacion" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="viviendas" column="viviendas" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Cubo PMR Ind nuevos" visible="true" cache="true" enabled="true">
+    <Table name="h_pmr_indicadores_nuevos" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_indicador" highCardinality="false" name="Indicadores">
+      <Hierarchy name="Indicadores" visible="true" hasAll="true" primaryKey="id_indicador">
+        <Table name="d_indicadores" schema="public">
+        </Table>
+        <Level name="nombre Indicador" visible="true" column="id_indicador" nameColumn="nombre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Fuente_Informacion" visible="true" hasAll="true" primaryKey="id_indicador">
+        <Table name="d_indicadores" schema="public">
+        </Table>
+        <Level name="fuente  informacion" visible="true" column="id_indicador" nameColumn="fuente_informacion" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_punto_medicion" highCardinality="false" name="Punto_medicion_indicador">
+      <Hierarchy name="Punto Medicion" visible="true" hasAll="true" primaryKey="id_punto_medicion">
+        <Table name="d_punto_medicion_indicadores" schema="public">
+        </Table>
+        <Level name="punto medicion" visible="true" column="punto_medicion" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Indicador directo" visible="true" hasAll="true" primaryKey="id_punto_medicion">
+        <Table name="d_punto_medicion_indicadores" schema="public">
+        </Table>
+        <Level name="indicador directo" visible="true" column="indicador_directo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Unidad" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Cont" column="cantidad" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Cubo SP SISINWEB" visible="true" cache="true" enabled="true">
+    <Table name="h_sp_sisinweb" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_p" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_m" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_r" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Acciones" name="Acciones" visible="true" foreignKey="id_a" highCardinality="false">
+    </DimensionUsage>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_sp_sisinweb" highCardinality="false" name="SP">
+      <Hierarchy name="SP" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Producto proyecto" visible="true" column="producto_proyecto_sp" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Categoria" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Categoria" visible="true" column="categoria" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Codigo SISIN sp" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Codigo sisin sp" visible="true" column="codigo_sisin_sp" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Codigo Demanda" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Codigo demanda" visible="true" column="codigo_demanda" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Ejecutor SP" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Ejecutor " visible="true" column="ejecutor_sp" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Requiere Revision" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Enlace dudoso" visible="true" column="duda" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_sp_sisinweb" highCardinality="false" name="SISINWEB">
+      <Hierarchy name="Entidad SISIN" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Entidad SISIN" visible="true" column="entidad_sisin" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Entidad codigo" visible="true" column="entidad_codigo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Codigo SISIN" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Codigo SISIN" visible="true" column="codigo_sisin" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Proyecto SISIN" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Proyecto SISIN" visible="true" column="proyecto_sisin" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Fecha Inicio" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="fecha inicio" visible="true" column="inicio" type="Date" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Fecha Fin" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Fecha fin" visible="true" column="fin" type="Date" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Sector SISIN" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Sector sisin" visible="true" column="sector" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Codigo sector" visible="true" column="codigo_sector" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Departamento" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Departamento" visible="true" column="departamento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Provincia" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Provincia" visible="true" column="provincia" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Municipio" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Municipio" visible="true" column="municipio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Fuente Presupuestaria" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Fuente" visible="true" column="fuente_presupuestaria" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Fuente sigla" visible="true" column="fuente_sigla" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Organo Presupuestador" visible="true" hasAll="true" primaryKey="id_sp_sisinweb">
+        <Table name="d_sp_sisinweb" schema="public">
+        </Table>
+        <Level name="Organo presupuestador" visible="true" column="organo_presupuestador" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Organo sigla" visible="true" column="organo_sigla" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Unidad" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Cont" column="cantidad" aggregator="count" visible="true">
+    </Measure>
+    <Measure name="Monto presupuestado" column="monto_presupuestado" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Monto presupuestado SUS" column="monto_presupuestado_sus" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

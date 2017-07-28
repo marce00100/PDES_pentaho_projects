@@ -512,7 +512,7 @@
     </hop>
     <hop>
       <from>d_punto_medicion</from>
-      <to>h_resultados_indicadores</to>
+      <to>h_pmr_indicadores_nuevos</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -757,7 +757,7 @@
     </step>
 
   <step>
-    <name>h_resultados_indicadores</name>
+    <name>h_pmr_indicadores_nuevos</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -769,7 +769,7 @@
     </partitioning>
     <connection>pg_dw_Est</connection>
     <schema/>
-    <table>h_resultados_indicadores</table>
+    <table>h_pmr_indicadores_nuevos</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>

@@ -1,0 +1,33 @@
+user: postgres 
+pass: postgres
+ 
+ingresar con: 
+sudo su - postgres   (pide contraseña de sudo: operador   aparecera el operador@nombreEquipo$   se pueden usar comandos psql o pg_restore, pg_dump)
+psql -h localhost -U postgres ( postgres#=   y se pueden ejecutar comandos sql)
+
+
+tambien se puede ingresar con 
+psql -U postgres -h localhost -W (-U usuario -h server -W pidecontraseña)
+
+
+Cambiar contraseña del usuario postgres
+ALTER USER usertochange WITH password 'new_passwd';
+
+Para RESTAURAR base de datos (debe estar creada la base de datos CREATE DATABASE nombreDB with owner usuario, en linux el usuario postgres debe tener acceso 777 sobre la ruta y archivo del backup  )
+pg_restore  -h localhost -p 5432opcional -U postgres -d mibaseDatos -v "/home/damian/backups/mibase.backup"
+
+Para entrar a una base de datos: 
+\c nombre_Base 
+
+Cerrar conexión	o salir del cliente	\q
+Cambiar de Base de datos	\c __base_datos__
+Listar Bases de datos		\l
+Ver Definiciones		\d __table__
+Listar Schemas			\dn
+Listar funciones		\df
+Listar Vistas			\dv
+Ver código SLQ de la función	\df+ __function
+Pretty-format			\x
+
+
+  

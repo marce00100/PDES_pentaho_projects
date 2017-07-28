@@ -1,0 +1,116 @@
+<Schema name="wb_dw_pmr_indicadores">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Pilares">
+    <Hierarchy name="Pilares" visible="true" hasAll="true" allMemberName="Pilares" allLevelName="Todos los Pilares" primaryKey="id_pilar" caption="Pilar">
+      <Table name="d_pilar" schema="public">
+      </Table>
+      <Level name="nombre pilar" visible="true" column="id_pilar" nameColumn="nombre_p" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="desc pilar" visible="true" column="id_pilar" nameColumn="descripcion_p" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Metas">
+    <Hierarchy name="Meta" visible="true" hasAll="true" allMemberName="Metas" allLevelName="Todas las Metas" primaryKey="id_meta">
+      <Table name="d_meta" schema="public">
+      </Table>
+      <Level name="nombre meta" visible="true" column="id_meta" nameColumn="nombre_m" ordinalColumn="pilar_meta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="pilar_meta" visible="true" column="id_meta" nameColumn="pilar_meta" ordinalColumn="pilar_meta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="desc meta" visible="true" column="id_meta" nameColumn="descripcion_m" ordinalColumn="pilar_meta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Resultados">
+    <Hierarchy name="Resultados" visible="true" hasAll="true" allMemberName="Resultados" allLevelName="Todos los Res." primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="desc  resultado" visible="true" column="id_resultado" nameColumn="descripcion_r" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="cod_r" visible="true" column="id_resultado" nameColumn="cod_r" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Nombre resultado" visible="true" column="id_resultado" nameColumn="nombre_r" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Clasificacion" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="Clasificacion resultado" visible="true" column="clasificacion" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Sector" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="Sector Resultado" visible="true" column="sector" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Macrosector" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="MacroSector" visible="true" column="macro_sector" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Variable_medicion" visible="true" hasAll="true" primaryKey="id_resultado">
+      <Table name="d_resultado" schema="public">
+      </Table>
+      <Level name="Variables de Medicion" visible="true" column="variables_medicion" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Cubo PMR" visible="true" cache="true" enabled="true">
+    <Table name="h_pmr" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Unidades" column="cantidad" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Conteo" column="cantidad" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Cubo Indicadores PMR" visible="true" cache="true" enabled="true">
+    <Table name="h_pmr_indicadores_nuevos" schema="public">
+    </Table>
+    <DimensionUsage source="Pilares" name="Pilares" visible="true" foreignKey="id_pilar" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metas" name="Metas" visible="true" foreignKey="id_meta" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Resultados" name="Resultados" visible="true" foreignKey="id_resultado" highCardinality="false">
+    </DimensionUsage>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_indicador" highCardinality="false" name="Indicadores">
+      <Hierarchy name="Indicadores" visible="true" hasAll="true" allMemberName="Indicadores" allLevelName="Todos los Ind." primaryKey="id_indicador">
+        <Table name="d_indicadores" schema="public">
+        </Table>
+        <Level name="Nombre Indicador" visible="true" column="id_indicador" nameColumn="nombre" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Fuente_Informacion" visible="true" hasAll="true" allMemberName="Fuentes Inf." allLevelName="Todas " primaryKey="id_indicador">
+        <Table name="d_indicadores" schema="public">
+        </Table>
+        <Level name="Fuente  informacion" visible="true" column="fuente_informacion" nameColumn="fuente_informacion" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_punto_medicion" highCardinality="false" name="Punto_medicion_indicador">
+      <Hierarchy name="Punto Medicion" visible="true" hasAll="true" primaryKey="id_punto_medicion">
+        <Table name="d_punto_medicion_indicadores" schema="public">
+        </Table>
+        <Level name="Punto Medicion" visible="true" column="punto_medicion" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Indicador directo" visible="true" hasAll="true" primaryKey="id_punto_medicion">
+        <Table name="d_punto_medicion_indicadores" schema="public">
+        </Table>
+        <Level name="indicador directo" visible="true" column="indicador_directo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="unidades" column="cantidad" aggregator="distinct-count" caption="Unidades" visible="true">
+    </Measure>
+    <Measure name="Conteo" column="cantidad" aggregator="count" caption="Conteo" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
